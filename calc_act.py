@@ -25,16 +25,7 @@ possible_contributions = [i/100 for i in range(0,101,5)]
 all_model_combs = it.product(possible_contributions, repeat=5)
 possibleratio = [comb for comb in all_model_combs if math.isclose(sum(comb),1, rel_tol=1e-06)]
 
-possibleratio= possibleratio[10500:]
-f=open('act_10500_10626.txt','w')
-"""
-rows=[]
-for i in range(0,35):
-    file=open(f'batch5/GPR_group{i}.csv')
-    csvreader=csv.reader(file)
-    for row in csvreader:
-        rows.append(row)
-"""
+f=open('activity.txt','w')
 
 def diff(x):
     return math.exp(-abs(x+0.27)/(kb*T))
