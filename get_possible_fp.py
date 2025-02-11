@@ -7,7 +7,7 @@ import random
 import sys
 from itertools import product
 from collections import defaultdict
-from helperMethods import multiplicity
+from sub_codes import multiplicity
 import csv
 import fileinput
 
