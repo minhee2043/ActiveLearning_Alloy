@@ -14,7 +14,7 @@ import itertools as it
 import numpy as np
 
 
-class Slab2(object):
+class Slab(object):
     '''slab class'''
 
     def __init__(self, atoms=None):
@@ -132,7 +132,8 @@ class Slab2(object):
         onTop:  if True, return the 6 symbols closest, else the 9 closest including double
         counting to 12 symbols'''
         if onTop:
-            return self.closest(layer=1, start=2, stop=7)[0]
+            return (self.closest(layer=1, start=2, stop=7)[0] +
+                   self.closest(layer=1, start=8, stop=10)[0])
         else:
             return (self.closest(layer=1, start=4, stop=6)[0]*2 +
                     self.closest(layer=1, start=7, stop=12)[0])
@@ -141,7 +142,8 @@ class Slab2(object):
         '''return the symbols for the nearest subsurface neighbours of the ensemble
         onTop:  if True, return the 3 symbols closest in subsurface, else 7 (hcp) or 6 (fcc)'''
         if onTop:
-            return self.closest(layer=2, start=1, stop=3)[0]
+            return (self.closest(layer=2, start=1, stop=3)[0] +
+                    self.closest(layer=2, start=4, stop=6)[0])
 
         if self.site == None:
             self.get_site()  # update the instance variable site with 'hcp' or 'fcc'
@@ -165,7 +167,10 @@ class Slab2(object):
 
     def surface_far(self):  # on-top not available --> unfeasible
         '''return the symbols for the 6 furthest surface neighbours of the ensemble'''
-        return self.closest(layer=1, start=7, stop=12)[0]
+        if onTop:
+            return self.closest(layer=1, start=8, stop=10)[0]
+        else:
+            return self.closest(layer=1, start=7, stop=12)[0]
 
     def subsurface_near(self, onTop=False):
         '''return the symbols for the nearest subsurface neighbours of the ensemble
@@ -173,7 +178,6 @@ class Slab2(object):
 
         if onTop:
             return self.closest(layer=2, start=1, stop=3)[0]
-
         if self.site == None:
             self.get_site()  # update the instance variable site with 'hcp' or 'fcc'
 
@@ -187,6 +191,8 @@ class Slab2(object):
     def subsurface_far(self):  # on-top not available --> unfeasible
         '''return the symbols for the 6 (hcp) or 3 (fcc) furthest subsurface neighbours of
         the ensemble'''
+        if onTop:
+            return self.closest(layer=2, start=4, stop=6)[0]
         if self.site == None:
             self.get_site()  # update the instance variable site with 'hcp' or 'fcc'
 
@@ -242,7 +248,7 @@ class Slab2(object):
         else:
             return False
 
-    def features(self, metals, onTop=False, zones=['ens', 's', 'ss']):
+    def features(self, metals, onTop=False, zones=['ens', 'sf', 'ssf','sn','ssn']):
         '''return a list of counts for each metal in each zone in the slab, ensembles are given
         a 1 for the type of ensemble present
         metals:         list of reference metals to do the counting according to
@@ -263,7 +269,7 @@ class Slab2(object):
                 if onTop:
                     ensSize = 1
                     siteSym = self.ensemble(onTop)
-                    siteCount = count_atoms(siteSym,metals)
+                    siteCount = count_atoms(siteSym,metals)*3 
                     feature+=siteCount
                 else:
                     ensSize = 3
