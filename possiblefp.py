@@ -2,26 +2,18 @@
 # The featurization process is described in paper
 
 # Import necessary libraries
-from ase import Atoms                       # For atomic structure creation
-from ase.visualize import view              # For visualizing atomic structures
-from ase.build import bulk, molecule, fcc111 # For building crystal structures
-from ase.calculators.vasp import Vasp       # VASP calculator interface
-from matplotlib import pyplot as plt        # For plotting
-from ase.optimize import BFGS               # For geometry optimization
-from ase.constraints import FixAtoms        # For constraining atoms
-import numpy as np                          # For numerical operations
-import copy                                 # For deep copying objects
-from itertools import combinations, product  # For generating combinations and products
-from ase.io import Trajectory, read, write  # For reading/writing atomic structures
-import ase.db                               # ASE database
-from ase.db import connect                  # For connecting to ASE database
-from ase.build import add_adsorbate         # For adding adsorbates
-import random                               # For random number generation
-import sys                                  # For system-specific parameters
-from collections import defaultdict         # For defaultdict data structure
-from helperMethods import multiplicity      # Custom function for calculating multiplicity
-import csv                                  # For CSV operations
-import fileinput                            # For file input operations
+from ase import Atoms                       
+from ase.visualize import view             
+from ase.build import bulk, molecule, fcc111 
+from ase.calculators.vasp import Vasp       
+import numpy as np                         
+import copy                                 
+from itertools import combinations, product  
+from ase.io import Trajectory, read, write  
+from collections import defaultdict         
+from helperMethods import multiplicity     
+import csv                                  
+import fileinput                            
 
 # Initialize counters and arrays
 i = 0
