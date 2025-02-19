@@ -27,7 +27,7 @@ Generate DFT-calculated dataspace:
 ```
 python possiblefp.py
 ```
-Convert surface motif to feature vector:
+Convert surface motif to feature vector (code inserted when DFT calculation is performed):
 ```
 from motif_analyzer import Slab
 trajectory = ase.io.read('<name of trajectory')
