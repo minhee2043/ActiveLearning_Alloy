@@ -133,3 +133,5 @@ class Regression():
             # save csv
             output = np.c_[feature, mults]
             np.savetxt(filename, output, fmt=['%d'] * 24 +['%d'], delimiter=',')
+
+Regression().all_fingerprints(filename='GPRgroup.csv',nMetals=5, zoneSizes=[3,6,3,3,3])
