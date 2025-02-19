@@ -9,7 +9,7 @@ import pickle
 from ase.calculators.vasp import Vasp2
 import os
 from ase.io import read
-from sub_codes import count_atoms, sortMetals
+from helperMethods import count_atoms, sortMetals
 import itertools as it
 import numpy as np
 
