@@ -165,8 +165,8 @@ class Slab(object):
         else:
             return self.closest(layer=1, start=4, stop=6)[0]
 
-    def surface_far(self):  # on-top not available --> unfeasible
-        '''return the symbols for the 6 furthest surface neighbours of the ensemble'''
+    def surface_far(self):  
+        '''return the symbols for the 3 (fcc),6 furthest surface neighbours of the ensemble'''
         if onTop:
             return self.closest(layer=1, start=8, stop=10)[0]
         else:
@@ -188,7 +188,7 @@ class Slab(object):
         else:
             raise ValueError('the site was not classified')
 
-    def subsurface_far(self):  # on-top not available --> unfeasible
+    def subsurface_far(self):  
         '''return the symbols for the 6 (hcp) or 3 (fcc) furthest subsurface neighbours of
         the ensemble'''
         if onTop:
