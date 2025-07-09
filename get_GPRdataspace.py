@@ -103,8 +103,7 @@ class Regression():
                 for zoneCount in theseZoneCounts:
                     zoneFp.extend(zoneCount)
                 
-                # Make the final fingerprint
-                
+                # Make the final fingerprint    
                 fp = np.array(adsFp + zoneFp) 
                 feature[i]=fp
                 # count of metals of fingerprint
