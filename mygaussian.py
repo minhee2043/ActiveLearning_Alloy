@@ -274,9 +274,9 @@ Parallel(n_jobs=num_cores)(delayed(process_file)(i) for i in range(0, 35))
 xs, ys, mult = [], [], []
 with open('../possiblesite.csv', 'r') as handle:
     for line in handle.readlines()[0:]:
-        f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,f19,f20,f21,f22,f23,f24,f25,f26,f27,mult=line[:].split(',')[:28]
+        f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,f19,f20,f21,f22,f23,f24,f25,f26,f27,multt=line[:].split(',')[:28]
         xs.append([f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16,f17,f18,f19,f20,f21,f22,f23,f24,f25,f26,f27])
-        multt.append(int(mult))  # Note: variable name mismatch (multt vs mult)
+        mult.append(int(multt))  
 
 xs = np.array(xs, dtype=int)
 
@@ -292,7 +292,7 @@ Z = imp/dev
 unc = imp*norm.cdf(Z) + dev*norm.pdf(Z)
 
 # Save results
-output = np.c_[xs, mult, ys, dev, unc]  # Note: should be multt instead of mult
+output = np.c_[xs, mult, ys, dev, unc]  
 np.savetxt('result/stable_GPR19.csv', output, fmt=['%d']*28+['%.5f']*3, delimiter=',')
 
 def find_largest_rows(file_path):
