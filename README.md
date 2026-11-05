@@ -1,4 +1,12 @@
 # ActiveLearning_Alloy
+
+> **This repository contains the code for the paper:**
+> M. Park, M. Kim, Y. Kim, S. J. Kwak, W.-B. Jung, H.-T. Jung, W. B. Lee, Y. Kim,
+> "[From prediction to synthesis: DFT-active learning-guided design of multimetallic catalysts for hydrogen evolution](https://www.sciencedirect.com/science/article/abs/pii/S1385894725055299)",
+> *Chemical Engineering Journal* **518**, 164693 (2025). DOI: [10.1016/j.cej.2025.164693](https://doi.org/10.1016/j.cej.2025.164693)
+>
+> If you use this code, please cite the paper (see [Citation](#citation)).
+
 Active learning based model to sufficiently navigate HER alloy catalyst, consisting of five metal components. 
 
 This repository contains the implementation of an active learning model to navigate HER catalyst. The codes are organized to generate features, preprocess data, and perform Gaussian process regression to predict energies and select the next points for calculation.
@@ -80,4 +88,18 @@ Based on the Boltzmann distribution of reaction kinetics, the activity of multim
 **Active Learning Model**: Customize mygaussian.py to change the Gaussian process regression model or the acquisition function. Filename should be edtited.
 
 Feel free to modify the code to suit your specific requirements and improve the model's performance.
+
+## Citation
+If you find this code useful in your research, please cite:
+```bibtex
+@article{park2025prediction,
+  title   = {From prediction to synthesis: DFT-active learning-guided design of multimetallic catalysts for hydrogen evolution},
+  author  = {Park, Minhee and Kim, Minki and Kim, Yesol and Kwak, Seung Jae and Jung, Woo-Bin and Jung, Hee-Tae and Lee, Won Bo and Kim, YongJoo},
+  journal = {Chemical Engineering Journal},
+  volume  = {518},
+  pages   = {164693},
+  year    = {2025},
+  doi     = {10.1016/j.cej.2025.164693}
+}
+```
 
